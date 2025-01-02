@@ -1,5 +1,5 @@
 class Livre {
-    constructor(nom, auteur, annee, isbn) {
+    constructor(nom, auteur, annee, isbn, texte) {
         this.nom = nom;
         this.auteur = auteur;
         this.annee = annee;
@@ -13,6 +13,7 @@ class Livre {
             console.warn('L\'ISBN est maquant veuillez l\'indiquer')
         }
         this.emprunte = false;
+        this.texte = texte;
     }
     afficherDetails() {
         console.log(`Titre: ${this.nom}, Auteur: ${this.auteur}, Année de parution: ${this.annee}, ISBN: ${this.isbn}`);
@@ -189,5 +190,10 @@ class Utilisateur {
     afficherSolde() {
         console.log(`${this.nom} à un solde de ${this.solde}€`);
     }
+    lireLivre(nom) {
+        const livre = this.livresEmpruntes.find((livre) => livre.nom === nom)
+        if (livre) {
+            console.log(livre.texte)
+        }
+    }
 }
-
